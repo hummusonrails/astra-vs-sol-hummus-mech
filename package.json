@@ -1,0 +1,26 @@
+{
+  "name": "modiin-mech-buildoff",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "apps/astra",
+    "apps/sol"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "build:astra": "npm run build --workspace @modiin-mech/astra",
+    "build:sol": "npm run build --workspace @modiin-mech/sol",
+    "dev:astra": "node scripts/dev.mjs astra",
+    "dev:sol": "node scripts/dev.mjs sol",
+    "check": "node scripts/check.mjs",
+    "privacy": "python3 scripts/privacy_check.py",
+    "test:browser": "python3 scripts/smoke.py",
+    "screenshots": "python3 scripts/screenshots.py",
+    "test:privacy": "python3 -m unittest discover -s scripts -p 'test_*.py'"
+  }
+}

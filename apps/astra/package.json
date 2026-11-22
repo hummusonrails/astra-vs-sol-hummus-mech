@@ -1,0 +1,14 @@
+{
+  "name": "@modiin-mech/astra",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node ../../scripts/dev.mjs astra"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  }
+}

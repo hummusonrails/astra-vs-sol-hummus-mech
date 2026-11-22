@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 240" role="img" aria-labelledby="title desc">
+<title id="title">Modi’in mech build-off</title><desc id="desc">Astra and Sol. One prompt each. Ten minutes to build a playable 3D district.</desc>
+<defs><linearGradient id="bg"><stop stop-color="#0b1018"/><stop offset="1" stop-color="#172c38"/></linearGradient></defs>
+<rect width="1280" height="240" fill="url(#bg)"/><path d="M0 239H1280" stroke="#e4bd72" stroke-width="3"/>
+<text x="56" y="102" fill="#fff9e6" font-family="system-ui,sans-serif" font-size="50" font-weight="700">Modi’in mech build-off</text>
+<text x="59" y="154" fill="#d6ddd9" font-family="system-ui,sans-serif" font-size="23">Astra vs Sol · one prompt each · ten minutes to ship</text>
+<text x="59" y="198" fill="#e4bd72" font-family="monospace" font-size="17">Three.js / real map data / exact token counts</text>
+</svg>

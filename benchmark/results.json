@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task": "A playable hummus mech in a geographically grounded district of Modiin, Israel",
+  "limit_seconds": 600,
+  "reasoning": "high",
+  "runs": [
+    {
+      "model": "gpt-6.2-astra",
+      "run_order": 2,
+      "agent_duration_seconds": 563.31,
+      "usage": {
+        "input_tokens": 1556971,
+        "cached_input_tokens": 1496832,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17336,
+        "reasoning_output_tokens": 1483,
+        "total_tokens": 1574307
+      },
+      "reasoning_included_in_output": true,
+      "completed_inside_limit": true,
+      "public_deployment_verified_during_original_run": true,
+      "independent_acceptance": {
+        "http_200": true,
+        "scene_state_loaded": true,
+        "walk": true,
+        "key_release": true,
+        "steer": true,
+        "orbit": true,
+        "stomp": true,
+        "reset": true,
+        "blur_stops_movement": true,
+        "refresh": true,
+        "no_page_errors": true
+      },
+      "geography": {
+        "roads_total": 313,
+        "roads_matching_original_coordinates": 313,
+        "buildings_total": 106,
+        "buildings_matching_original_footprints": 106,
+        "open_space_polygons_total": 37,
+        "open_space_polygons_matching_original": 37
+      },
+      "stack": [
+        "JavaScript ES modules",
+        "Three.js 0.180.0 / WebGL 2",
+        "Node static build"
+      ],
+      "publication_changes": [
+        "Removed personal branding",
+        "Made builds and browser tooling portable; no gameplay redesign"
+      ]
+    },
+    {
+      "model": "gpt-6.2-sol",
+      "run_order": 1,
+      "agent_duration_seconds": 570.362,
+      "usage": {
+        "input_tokens": 2615076,
+        "cached_input_tokens": 2562816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23091,
+        "reasoning_output_tokens": 1893,
+        "total_tokens": 2638167
+      },
+      "reasoning_included_in_output": true,
+      "completed_inside_limit": true,
+      "public_deployment_verified_during_original_run": true,
+      "independent_acceptance": {
+        "http_200": true,
+        "scene_state_loaded": true,
+        "walk": true,
+        "key_release": true,
+        "steer": true,
+        "orbit": true,
+        "stomp": true,
+        "reset": true,
+        "blur_stops_movement": true,
+        "refresh": true,
+        "no_page_errors": true
+      },
+      "geography": {
+        "roads_total": 337,
+        "roads_matching_original_coordinates": 337,
+        "buildings_total": 134,
+        "buildings_matching_original_footprints": 134,
+        "open_space_polygons_total": 34,
+        "open_space_polygons_matching_original": 34
+      },
+      "stack": [
+        "JavaScript",
+        "Three.js 0.181.2",
+        "WebGL 2",
+        "Vite 7.2.2"
+      ],
+      "publication_changes": [
+        "Removed personal branding",
+        "Made builds and browser tooling portable; no gameplay redesign"
+      ]
+    }
+  ],
+  "comparison": {
+    "astra_output_token_reduction_percent": 24.923130223896763,
+    "agent_duration_difference_seconds": 7.052000000000021,
+    "scope": "One completed scored run per model. Private raw sessions, timestamps, account metadata and original deployments are not distributed."
+  }
+}

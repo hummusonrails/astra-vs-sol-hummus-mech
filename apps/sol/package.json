@@ -1,0 +1,17 @@
+{
+  "name": "@modiin-mech/sol",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node ../../scripts/dev.mjs sol"
+  },
+  "dependencies": {
+    "three": "0.181.2"
+  },
+  "devDependencies": {
+    "vite": "7.3.8"
+  }
+}

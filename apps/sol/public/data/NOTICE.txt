@@ -1,0 +1,2 @@
+Map geometry: Copyright OpenStreetMap contributors, ODbL 1.0. License: ../ODbL-1.0.txt
+Terrain: Mapzen Terrain Tiles; SRTM and GMTED2010 data courtesy of the U.S. Geological Survey. See ../TERRAIN.md

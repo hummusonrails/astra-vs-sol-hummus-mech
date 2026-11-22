@@ -1,0 +1,24 @@
+name: Bug report
+description: Report a reproducible problem in either app.
+body:
+  - type: dropdown
+    id: app
+    attributes:
+      label: App
+      options: [Astra, Sol, Build or benchmark tooling]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and expected behavior
+      description: Include the browser and app. Remove home-directory paths, account details and tokens from pasted output.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Actual behavior
+      description: A cropped app screenshot is useful. Avoid desktop screenshots containing personal information.
+    validations:
+      required: true
