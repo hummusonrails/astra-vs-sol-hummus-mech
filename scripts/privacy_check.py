@@ -62,6 +62,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--denylist', type=Path, help='Private file of additional identifying strings, outside this repository')
     parser.add_argument('--include-builds', action='store_true')
+    parser.add_argument('--anonymous-history', action='store_true', help='Require anonymous commit emails in the publication checkout')
     args = parser.parse_args()
     denied = [line.strip().lower() for line in args.denylist.read_text().splitlines() if line.strip()] if args.denylist else []
     problems = []
@@ -89,7 +90,7 @@ def main():
             if any(value in history.stdout.lower() for value in denied):
                 problems.append(('.git history', 'private denylist match'))
             addresses = RULES['email address'].findall(history.stdout)
-            if any(not address.endswith('@example.invalid') for address in addresses):
+            if args.anonymous_history and any(not address.endswith('@example.invalid') for address in addresses):
                 problems.append(('.git history', 'non-anonymous commit email'))
     for path, reason in sorted(set((str(p), r) for p, r in problems)):
         print(f'{path}: {reason}', file=sys.stderr)

@@ -57,7 +57,7 @@ A local private denylist can add names or identifiers to the audit without check
 python scripts/privacy_check.py --include-builds --denylist ../private-identifiers.txt
 ```
 
-The scanner reports file names and categories, never matching values. It is a practical check, not a proof that arbitrary documents or pixels contain no identifying information. Review screenshots and the complete staged file list as well.
+The scanner reports file names and categories, never matching values. It is a practical check, not a proof that arbitrary documents or pixels contain no identifying information. Review screenshots and the complete staged file list as well. Add `--anonymous-history` when checking an anonymous publication checkout; hosted CI checks content without assuming the runner’s auxiliary refs use the same identity policy.
 
 ## Benchmark changes
 
