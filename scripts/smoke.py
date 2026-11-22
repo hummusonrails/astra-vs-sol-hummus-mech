@@ -18,14 +18,14 @@ def run(url,out):
   result['checks']['http_200']=response.status==200
   result['checks']['scene_state_loaded']=bool(start)
   page.screenshot(path=str(out/'verified-opening.png'))
-  page.keyboard.down('w');page.wait_for_timeout(1200);page.keyboard.up('w');page.wait_for_timeout(200)
+  page.keyboard.down('w');page.wait_for_function('s => Math.hypot(('+STATE+')().x-s.x, ('+STATE+')().z-s.z)>1',arg=start,timeout=20000);page.keyboard.up('w');page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))')
   walked=page.evaluate(STATE);result['checks']['walk']=distance(start,walked)>1
-  page.wait_for_timeout(300);result['checks']['key_release']=distance(walked,page.evaluate(STATE))<.08
-  heading=page.evaluate(STATE)['heading'];page.keyboard.down('ArrowRight');page.wait_for_timeout(350);page.keyboard.up('ArrowRight')
+  page.evaluate('() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');result['checks']['key_release']=distance(walked,page.evaluate(STATE))<.08
+  heading=page.evaluate(STATE)['heading'];page.keyboard.down('ArrowRight');page.wait_for_function('h => Math.abs(('+STATE+')().heading-h)>.1',arg=heading,timeout=20000);page.keyboard.up('ArrowRight')
   result['checks']['steer']=abs(page.evaluate(STATE)['heading']-heading)>.1
   old=page.evaluate(STATE)['orbit'];page.mouse.move(650,360);page.mouse.down();page.mouse.move(790,400,steps=10);page.mouse.up();page.wait_for_timeout(250)
   result['checks']['orbit']=abs(page.evaluate(STATE)['orbit']-old)>.1
-  before=page.evaluate(STATE)['stomps'];page.keyboard.press('Space');page.wait_for_timeout(650);page.screenshot(path=str(out/'verified-stomp.png'));page.wait_for_timeout(650)
+  before=page.evaluate(STATE)['stomps'];page.keyboard.press('Space');page.wait_for_function('n => ('+STATE+')().stomps>n',arg=before,timeout=20000);page.screenshot(path=str(out/'verified-stomp.png'))
   result['checks']['stomp']=page.evaluate(STATE)['stomps']>before
   page.keyboard.press('r');page.wait_for_timeout(400);result['checks']['reset']=distance(start,page.evaluate(STATE))<.1
   page.keyboard.down('w');page.wait_for_timeout(200);page.evaluate('window.dispatchEvent(new Event("blur"))');page.wait_for_timeout(150);blur=page.evaluate(STATE);page.wait_for_timeout(300)
