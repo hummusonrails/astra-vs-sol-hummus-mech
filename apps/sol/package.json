@@ -9,7 +9,7 @@
     "dev": "node ../../scripts/dev.mjs sol"
   },
   "dependencies": {
-    "three": "0.181.2"
+    "three": "0.187.0"
   },
   "devDependencies": {
     "vite": "7.3.8"
