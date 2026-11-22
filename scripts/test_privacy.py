@@ -3,6 +3,8 @@ import contextlib
 import io
 from pathlib import Path
 import tempfile
+import struct
+import zlib
 import unittest
 from unittest.mock import patch
 import privacy_check
@@ -42,6 +44,20 @@ class PrivacyChecks(unittest.TestCase):
     def test_public_attribution_is_allowed(self):
         code, _ = self.run_scan('notice.txt', 'Map data: https://www.openstreetmap.org/copyright')
         self.assertEqual(code, 0)
+
+    def test_png_pixels_are_not_scanned_as_text(self):
+        value = ('sample' + '@' + 'private.invalid').encode()
+        chunk = b'IDAT' + value
+        raw = b'\x89PNG\r\n\x1a\n' + struct.pack('>I', len(value)) + chunk + struct.pack('>I', zlib.crc32(chunk))
+        self.assertEqual(privacy_check.metadata_text(Path('image.png'), raw), '')
+
+    def test_png_compressed_metadata_is_inspected(self):
+        value = ('/' + 'home' + '/' + 'sample-user' + '/' + 'work').encode()
+        data = b'Comment\0\x01\x00\0\0' + zlib.compress(value)
+        chunk = b'iTXt' + data
+        raw = b'\x89PNG\r\n\x1a\n' + struct.pack('>I', len(data)) + chunk + struct.pack('>I', zlib.crc32(chunk))
+        text = privacy_check.metadata_text(Path('image.png'), raw)
+        self.assertTrue(privacy_check.RULES['personal home directory'].search(text))
 
 if __name__ == '__main__':
     unittest.main()

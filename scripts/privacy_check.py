@@ -45,8 +45,10 @@ def metadata_text(path, raw):
                 key, compressed = data.split(b'\0', 1)
                 strings.append(key.decode('latin-1') + zlib.decompress(compressed[1:]).decode('utf-8', errors='ignore'))
             elif kind == b'iTXt':
-                key, compressed, method, language, translated, text = data.split(b'\0', 5)
-                if compressed == b'\x01':
+                key, rest = data.split(b'\0', 1)
+                compressed, method = rest[0], rest[1]
+                language, translated, text = rest[2:].split(b'\0', 2)
+                if compressed == 1:
                     text = zlib.decompress(text)
                 strings.append(key.decode('utf-8', errors='ignore') + text.decode('utf-8', errors='ignore'))
             elif kind == b'eXIf':
