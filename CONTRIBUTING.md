@@ -59,6 +59,10 @@ python scripts/privacy_check.py --include-builds --denylist ../private-identifie
 
 The scanner reports file names and categories, never matching values. It is a practical check, not a proof that arbitrary documents or pixels contain no identifying information. Review screenshots and the complete staged file list as well. Add `--anonymous-history` when checking an anonymous publication checkout; hosted CI checks content without assuming the runner’s auxiliary refs use the same identity policy.
 
+## Commit attribution
+
+Use your GitHub-provided no-reply email in Git author settings to receive contribution credit without publishing a personal email. Authentication through `gh` authorizes the push; the commit email links the contribution to your profile. The repository’s `.mailmap` links the initial publication commits to its maintainer.
+
 ## Benchmark changes
 
 Record a new run separately with its prompt, model, reasoning setting, tool access, time limit and exact usage source. Do not apply later fixes and attribute them to the original ten-minute run. Label screenshots of modified code as current examples. One scored run per model is not enough to claim a universal ranking.
